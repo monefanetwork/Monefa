@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>راهنمای نصب نود Monefa (XMF) روی اوبونتو</title>
+<meta name="description" content="راهنمای گام‌به‌گام نصب نود بلاکچین Monefa روی Ubuntu — ماینینگ CPU و اتصال P2P">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2336B2F6'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='36' font-weight='900' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #081020; --card: #0c1728; --card2: #101d31;
+    --border: #1b2a47; --blue: #36b2f6; --purple: #8b5cf6;
+    --cyan: #22d3ee; --text: #e2e8f0; --muted: #8b98ad;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.9; min-height: 100vh;
+  }
+  .hero {
+    background: linear-gradient(160deg, rgba(54,178,246,.14) 0%, rgba(139,92,246,.10) 50%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px 40px; text-align: center;
+  }
+  .logo {
+    width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 38px; color: #fff;
+    box-shadow: 0 0 40px rgba(54,178,246,.35);
+  }
+  .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+  .hero p { color: var(--muted); font-size: 14px; }
+  .badges { display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+  .badge {
+    border: 1px solid rgba(54,178,246,.4); color: var(--blue);
+    font-size: 12px; padding: 3px 12px; border-radius: 99px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px 80px; }
+  .oneline {
+    background: linear-gradient(135deg, rgba(54,178,246,.12), rgba(139,92,246,.12));
+    border: 1px solid rgba(54,178,246,.35); border-radius: 16px;
+    padding: 20px 24px; margin-bottom: 36px;
+  }
+  .oneline h2 { font-size: 17px; color: var(--cyan); margin-bottom: 8px; }
+  .oneline p { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+  .step {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin-bottom: 20px;
+  }
+  .step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .step-num {
+    width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: #fff; font-size: 17px;
+  }
+  .step-head h2 { font-size: 17px; font-weight: 700; }
+  .step p { font-size: 14px; color: #c3cddc; margin-bottom: 10px; }
+  .step .note { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+  .step .warn { color: #fbbf24; }
+  pre {
+    background: #050b18; border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; padding-left: 64px; position: relative;
+    font-family: 'Cascadia Code', Consolas, monospace;
+    font-size: 12.5px; line-height: 1.9; color: #a8d8f8;
+    direction: ltr; text-align: left; overflow-x: auto; margin: 10px 0;
+  }
+  .copy {
+    position: absolute; top: 8px; left: 8px;
+    background: var(--card2); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 7px;
+    font-size: 11px; padding: 3px 10px; cursor: pointer;
+    font-family: inherit;
+  }
+  .copy:hover { color: var(--blue); border-color: var(--blue); }
+  code.inline {
+    background: var(--card2); border: 1px solid var(--border);
+    padding: 1px 8px; border-radius: 6px; font-size: 12.5px;
+    direction: ltr; unicode-bidi: embed; color: var(--cyan);
+    font-family: Consolas, monospace;
+  }
+  ul.sec { padding-right: 22px; font-size: 14px; color: #c3cddc; }
+  ul.sec li { margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: right; }
+  th { background: var(--card2); color: var(--blue); }
+  td { color: #c3cddc; }
+  td.ltr { direction: ltr; text-align: left; font-family: Consolas, monospace; font-size: 12px; }
+  .footer { text-align: center; color: var(--muted); font-size: 12.5px; padding: 24px; border-top: 1px solid var(--border); }
+  .footer b { color: var(--blue); }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 20px; }
+    .step { padding: 18px; }
+    pre { font-size: 11.5px; padding-left: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo">M</div>
+  <h1>راهنمای نصب نود Monefa (XMF)</h1>
+  <p>نصب نود بلاکچین Monefa روی Ubuntu — از صفر تا ماینینگ CPU زنده</p>
+  <div class="badges">
+    <span class="badge">Ubuntu 20.04+</span>
+    <span class="badge">۲ هسته CPU / 2GB RAM</span>
+    <span class="badge">CryptoNight-Lite-Fa</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- روش یک‌خطی -->
+  <div class="oneline">
+    <h2>⚡ نصب سریع — فقط یک خط!</h2>
+    <p>اگر فایل <code class="inline">easy-install.sh</code> را از بسته دانلودی دارید، همه مراحل زیر (پیش‌نیازها + نود + وب + سرویس دائمی + فایروال) به‌صورت خودکار انجام می‌شود:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>bash easy-install.sh</pre>
+    <p>یا به‌صورت کاملاً خودکار از مخزن:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>wget -O easy-install.sh https://YOUR-SERVER/easy-install.sh &amp;&amp; bash easy-install.sh</pre>
+    <p>مراحل دستی زیر برای کسانی است که می‌خواهند گام‌به‌گام نصب کنند.</p>
+  </div>
+
+  <!-- گام ۱ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۱</div><h2>پیش‌نیازها</h2></div>
+    <p>ابزارهای پایه و زمان اجرای Bun را نصب کنید:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install -y curl git build-essential unzip
+
+# نصب Bun (زمان اجرای پرسرعت جاوااسکریپت)
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+bun --version</pre>
+  </div>
+
+  <!-- گام ۲ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۲</div><h2>دریافت و آماده‌سازی نود</h2></div>
+    <p>بسته سورس را در مسیر <code class="inline">/opt/monerofa</code> قرار دهید:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>sudo mkdir -p /opt/monerofa
+sudo unzip monefa-network-v1.0-source.zip -d /opt/monerofa
+# یا: git clone &lt;آدرس-مخزن-شما&gt; /opt/monerofa
+sudo chown -R $USER:$USER /opt/monerofa
+cd /opt/monerofa</pre>
+  </div>
+
+  <!-- گام ۳ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۳</div><h2>نصب وابستگی‌ها و دیتابیس</h2></div>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>cd /opt/monerofa
+bun install
+bun run db:push</pre>
+    <p class="note">دیتابیس SQLite در مسیر <code class="inline">db/custom.db</code> ساخته می‌شود — نیازی به دیتابیس خارجی نیست.</p>
+  </div>
+
+  <!-- گام ۴ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۴</div><h2>کلیدهای رمزنگاری</h2></div>
+    <p>فایل <code class="inline">.env</code> با کلیدهای تصادفی بسازید:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>cat &gt; /opt/monerofa/.env &lt;&lt; 'ENV'
+DATABASE_URL=file:/opt/monerofa/db/custom.db
+WALLET_SECRET=&lt;یک-رشته-تصادفی-بلند&gt;
+SESSION_SECRET=&lt;یک-رشته-تصادفی-دیگر&gt;
+ENV
+
+# تولید کلید تصادفی:
+openssl rand -hex 32</pre>
+    <p class="note warn">⚠️ <b>WALLET_SECRET</b> برای رمزگشایی کلیدهای کیف پول‌هاست — اگر گم شود، کیف پول‌ها قابل بازیابی نیستند. پشتیبان بگیرید!</p>
+  </div>
+
+  <!-- گام ۵ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۵</div><h2>اجرای نود</h2></div>
+    <p>اجرای مستقیم برای تست:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>cd /opt/monerofa/mini-services/monerofa-node
+bun src/node.ts</pre>
+    <table>
+      <tr><th>پورت</th><th>کاربرد</th></tr>
+      <tr><td class="ltr">3030</td><td>WebSocket — P2P + ماینینگ راه‌دور + پخش زنده</td></tr>
+      <tr><td class="ltr">3031</td><td>HTTP API داخلی (فقط localhost)</td></tr>
+    </table>
+  </div>
+
+  <!-- گام ۶ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۶</div><h2>سرویس systemd — اجرای دائمی</h2></div>
+    <p>برای اجرای خودکار پس از ری‌استارت سرور:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>sudo tee /etc/systemd/system/monerofa-node.service &gt; /dev/null &lt;&lt; EOF
+[Unit]
+Description=Monefa Blockchain Node
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=/opt/monerofa/mini-services/monerofa-node
+EnvironmentFile=/opt/monerofa/.env
+ExecStart=$(which bun) src/node.ts
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now monerofa-node
+sudo systemctl status monerofa-node</pre>
+    <p class="note">لاگ زنده: <code class="inline">journalctl -u monerofa-node -f</code></p>
+  </div>
+
+  <!-- گام ۷ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۷</div><h2>ماینینگ CPU</h2></div>
+    <p><b>روش ۱ — اتصال به استخر (پیشنهادی):</b> پاداش به‌صورت PPLNS تقسیم و خودکار پرداخت می‌شود:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>cd /opt/monerofa/mini-services/monerofa-node
+bun src/miner-cli.ts \
+  --url ws://SERVER-IP:3030 \
+  --address 4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
+  --worker rig1 \
+  --threads 8</pre>
+    <p><b>روش ۲ — انفرادی (solo):</b> پاداش بلاک مستقیم به آدرس شما:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button>bun src/miner-cli.ts --solo \
+  --url ws://SERVER-IP:3030 \
+  --address 4xxx... --threads 8</pre>
+    <p class="note">ماینر راه‌دور به دیتابیس نیاز ندارد — فقط WebSocket به نود کافی است. روی هر سرور دیگر هم می‌توانید همین دستور را اجرا کنید.</p>
+  </div>
+
+  <!-- گام ۸ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۸</div><h2>اتصال نودهای دیگر (P2P)</h2></div>
+    <p>روی سرور دوم همین نصب را انجام دهید و همتا را معرفی کنید:</p>
+    <pre><button class="copy" onclick="cp(this)">کپی</button># هنگام اجرای نود:
+PEERS=ws://SERVER1-IP:3030 bun src/node.ts
+
+# یا بدون ری‌استارت — از پنل مدیریت → همتاهای P2P → ws://SERVER1-IP:3030</pre>
+    <p class="note">نودها به‌طور خودکار همگام می‌شوند و بلاک‌ها و تراکنش‌ها بین همتاها منتشر می‌شود.</p>
+  </div>
+
+  <!-- گام ۹ -->
+  <div class="step">
+    <div class="step-head"><div class="step-num">۹</div><h2>امنیت و فایروال</h2></div>
+    <ul class="sec">
+      <li>باز کردن فقط پورت‌های لازم: <code class="inline">sudo ufw allow 22,3000,3030/tcp</code></li>
+      <li>پورت <span dir="ltr">3031</span> (HTTP API) را فقط برای localhost نگه دارید.</li>
+      <li>اگر حساب مدیریتی پیش‌فرض دارید، گذرواژه‌اش را فوراً عوض کنید.</li>
+      <li>پشتیبان‌گیری دوره‌ای: <code class="inline">cp db/custom.db backup/</code></li>
+      <li>عبارت بازیابی (سید) کیف پول‌ها را روی کاغذ و خارج از سرور نگه دارید.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <b>Monefa Network (XMF)</b> — Finance Without Borders · مالی بدون مرز<br>
+  بلاکچین متن‌باز CryptoNote · RingCT · استخر PPLNS · نسخه ۱.۰
+</div>
+
+<script>
+function cp(btn) {
+  var code = btn.parentElement.innerText.replace(/^کپی\n?/, '');
+  navigator.clipboard.writeText(code).then(function () {
+    var old = btn.textContent; btn.textContent = '✓ کپی شد';
+    setTimeout(function () { btn.textContent = old; }, 1500);
+  });
+}
+</script>
+</body>
+</html>
