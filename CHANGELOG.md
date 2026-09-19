@@ -5,6 +5,18 @@ Official binaries: [Releases](../../releases) · Live network: [monefa.net](http
 
 ---
 
+## [Android Wallet v1.0.1] — 2026-09
+
+Hotfix release — fixes the first-launch crash present in v1.0.0.
+
+- **Crash on every launch fixed**: `kotlin.UninitializedPropertyAccessException: lateinit property plain has not been initialized` — `MonefaApp.attachBaseContext` read the language preference before the store was initialized
+- Store rewritten with lazy, crash-proof initialization — safe to access from any phase, including `attachBaseContext`
+- Additional resilience: if a device's KeyStore is broken, the app now falls back to app-private storage instead of crashing
+- versionCode 2 (versionName 1.0.1) — installs directly over v1.0.0, same signing key
+- sha256: `133ef232d3d4f1137d7ff501facc681f87467f7ab96271c5b11471d8378d805b`
+
+---
+
 ## [Android Wallet v1.0.0] — 2026-09
 
 First official native mobile wallet — **Kotlin + Jetpack Compose, no WebView**.
