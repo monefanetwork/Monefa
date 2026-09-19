@@ -40,9 +40,9 @@ Monefa is a complete, self-hosted privacy blockchain stack. Every layer — the 
 | 🤖 **Telegram bot + Mini App** | Telegram (mobile/desktop) | [@Monefanet_bot](https://t.me/Monefanet_bot) |
 | 🧩 **Browser extension** | Chrome / Firefox | [monefa.net/downloads](https://monefa.net/downloads) |
 | ⛏️ **CLI Miner (standalone binary)** | Windows · Linux x64 | [Download → Releases](../../releases/tag/miner-v1.1.0) |
-| 📱 **Mobile wallet** | — | Planned |
+| 📱 **Android Wallet v1.0.0** (native Kotlin, no WebView) | Android 7.0+ | [Download → Releases](../../releases/tag/wallet-android-v1.0.0) · [monefa.net/downloads](https://monefa.net/downloads) |
 
-## ⛏️ Mining — three easy ways
+## ⛏️ Mining — four easy ways
 
 **1. Official CLI miner (standalone binary — no source, no runtime needed):**
 
@@ -57,6 +57,8 @@ Monefa is a complete, self-hosted privacy blockchain stack. Every layer — the 
 **2. Desktop GUI Wallet** — built-in Mining page: pool or solo, per-thread control, live hashrate and accepted shares.
 
 **3. Browser mining** — open [monefa.net](https://monefa.net) and opt in (never auto-starts).
+
+**4. Android wallet — remote mining control** — start / pause / stop mining on **your own node or server** from your phone, with live hashrate, shares and block feed. Nothing mines on the phone itself (Google Play Financial-features policy compliant).
 
 Pool payouts support a 3-level referral network (L1 5% / L2 2% / L3 1%).
 
@@ -100,6 +102,7 @@ All official builds and their change notes are published on the [**Releases**](.
 Latest highlights:
 
 - **Network v2.1.0** — Telegram Mini App rebuilt (auth fixed, mining, payments, 5 languages), math captcha restored, persistent merchant payment links, bot explorer rewritten, auto-mining on boot removed
+- **Android Wallet v1.0.0** — native Kotlin wallet (no WebView): balance, stealth transfers, receive QR, 16-word seed, cloud-mining control for your own node, explorer, 5 languages with RTL, PIN lock + encrypted storage
 - **GUI Wallet v1.1.0** — built-in pool/solo CPU mining, 9 languages with RTL, math captcha, monero-gui style UX
 - **CLI Miner v1.1.0** — standalone Windows/Linux binaries connecting to the official pool
 
@@ -128,6 +131,7 @@ Found a bug or have an idea? Open an [issue](../../issues) or reach the team via
 | روش استفاده | لینک |
 |---|---|
 | 🌐 کیف پول وب | [monefa.net](https://monefa.net) |
+| 📱 کیف پول اندروید (ناتیو کاتلین، بدون WebView) | اندروید ۷+ · [Releases](../../releases/tag/wallet-android-v1.0.0) یا [monefa.net/downloads](https://monefa.net/downloads) |
 | 🖥️ کیف پول دسکتاپ (ویندوز/لینوکس) | [Releases](../../releases/tag/gui-wallet-v1.1.0) یا [monefa.net/downloads](https://monefa.net/downloads) |
 | 🤖 بات و Mini App تلگرام | [@Monefanet_bot](https://t.me/Monefanet_bot) |
 | 🧩 افزونه مرورگر | [monefa.net/downloads](https://monefa.net/downloads) |
@@ -140,7 +144,7 @@ Found a bug or have an idea? Open an [issue](../../issues) or reach the team via
 
 **مشخصات سکه:** نماد XMF · PoW حافظه‌مقاوم CryptoNight-Lite-Fa · بلاک ~۱۵ ثانیه · عرضه ≈ ۱۸٫۴۵ میلیون · سید ۱۶ کلمه‌ای · قفل خروجی ۵ بلاک
 
-**آخرین آپدیت‌ها:** نسخه شبکه v2.1.0 (بازسازی Mini App تلگرام، کپچای ریاضی، لینک‌های پرداخت ماندگار، بازنویسی اکسپلورر بات) · کیف پول دسکتاپ v1.1.0 (ماینینگ داخلی استخر/سولو، ۹ زبان با RTL) · ماینر CLI v1.1.0 (باینری مستقل ویندوز/لینوکس)
+**آخرین آپدیت‌ها:** کیف پول اندروید v1.0.0 (اپ بومی کاتلین بدون WebView، کنترل ماینینگ ابری روی نود خودتان، ۵ زبان با RTL) · نسخه شبکه v2.1.0 (بازسازی Mini App تلگرام، کپچای ریاضی، لینک‌های پرداخت ماندگار، بازنویسی اکسپلورر بات) · کیف پول دسکتاپ v1.1.0 (ماینینگ داخلی استخر/سولو، ۹ زبان با RTL) · ماینر CLI v1.1.0 (باینری مستقل ویندوز/لینوکس)
 
 ### 🔐 اطلاعیه سورس کد
 
