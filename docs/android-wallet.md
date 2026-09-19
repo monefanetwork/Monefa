@@ -1,8 +1,8 @@
-# 📱 Monefa Wallet for Android — v1.0.0
+# 📱 Monefa Wallet for Android — v1.0.1
 
 Official native Android wallet for the Monefa network (XMF). **Kotlin + Jetpack Compose — not a WebView shell.**
 
-- **Download (APK):** [Releases → wallet-android-v1.0.0](../../releases/tag/wallet-android-v1.0.0) · [monefa.net/downloads](https://monefa.net/downloads)
+- **Download (APK):** [Releases → wallet-android-v1.0.1](../../releases/tag/wallet-android-v1.0.1) · [monefa.net/downloads](https://monefa.net/downloads)
 - **Requires:** Android 7.0+ (API 24) · ~8 MB · package `net.monefa.wallet`
 
 ---
@@ -56,11 +56,13 @@ Start / pause / resume / stop mining that runs on **your own Monefa node or serv
 
 ## 🔐 Verification
 
-sha256 of `MonefaWallet-v1.0.0.apk`:
+sha256 of `MonefaWallet-v1.0.1.apk`:
 
 ```
-23803b2c1b0f5668ed8e109151bb7c07593a38c549001ffb963abcef46234e64
+133ef232d3d4f1137d7ff501facc681f87467f7ab96271c5b11471d8378d805b
 ```
+
+> 🔧 **v1.0.1 hotfix** — fixes the first-launch crash in v1.0.0 (`UninitializedPropertyAccessException` during app startup). versionCode 2, installs directly over v1.0.0. Same signature.
 
 The APK is signed with the official Monefa release key. Android will warn about unknown sources when sideloading — this is normal outside Play Store.
 
