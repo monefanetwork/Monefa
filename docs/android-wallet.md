@@ -1,4 +1,4 @@
-# 📱 Monefa Wallet for Android — v1.0.1
+# 📱 Monefa Wallet for Android — v1.0.2
 
 Official native Android wallet for the Monefa network (XMF). **Kotlin + Jetpack Compose — not a WebView shell.**
 
@@ -17,14 +17,19 @@ Official native Android wallet for the Monefa network (XMF). **Kotlin + Jetpack 
 - Full transfer history
 - **16-word seed** reveal (Persian wordlist) for backup and recovery
 
-### Mining — remote control (cloud mining)
-Start / pause / resume / stop mining that runs on **your own Monefa node or server** via the official `/user-mining` API:
+### Mining — two modes
 
-- Solo or Pool mode, adjustable thread count
-- Live hashrate, accepted shares, blocks found, session duration
-- Network stats (height, difficulty, pool status)
+**1. On this phone (CPU)** — real on-device mining through the official pool (`monefa.net:3333` stratum):
 
-> ⚠️ **Nothing is mined on the phone itself.** This design is intentional: Google Play's *Financial Features* policy prohibits on-device cryptocurrency mining, while remote management of your own infrastructure is allowed. The app is therefore fully compliant for Play Store distribution.
+- Native Kotlin implementation of the Monefa PoW (keccak-512 + 128 KB memory-hard scratchpad + 2048 iterations) — verified against the node's reference implementation
+- Foreground service with a persistent notification, start/pause/stop always under your control, never auto-started
+- Thread count control (1–8), live hashrate, accepted/rejected shares, uptime
+
+> ⚠️ Mining uses the CPU intensively and consumes battery. It runs **only** when you explicitly start it.
+
+**2. Remote control (cloud mining)** — start/pause/resume/stop mining on **your own Monefa node or server** via the `/user-mining` API: solo/pool mode, thread count, live hashrate, shares, blocks found.
+
+> 🛡️ For the **Google Play build**, on-device mining is compiled out (`PHONE_MINING = false` in `app/build.gradle.kts`) per the Play *Financial Features* policy; the sideload APK ships with it enabled.
 
 ### Explorer
 - Latest blocks with live updates, mempool feed
@@ -33,8 +38,9 @@ Start / pause / resume / stop mining that runs on **your own Monefa node or serv
 ### Security & Privacy
 - Session stored in **EncryptedSharedPreferences** (AES-256-GCM)
 - Optional **PIN lock** (SHA-256)
-- **Zero trackers, zero ads, zero analytics** — the only permission is `INTERNET`
-- All traffic goes to `https://monefa.net` (the official node API)
+- **Math captcha** on login/register (HMAC-signed, server-verified)
+- **Zero trackers, zero ads, zero analytics** — network access only; no location, no contacts, no advertising IDs
+- All traffic goes to `https://monefa.net` (the official node API) and the official pool
 
 ### Localization
 - English · فارسی · Русский · العربية · Türkçe — with full RTL support and in-app language switcher
@@ -46,7 +52,7 @@ Start / pause / resume / stop mining that runs on **your own Monefa node or serv
 | Requirement | How the app complies |
 |---|---|
 | Financial features declaration | Declared as a software wallet; no exchange / custody / lending features |
-| On-device mining prohibition | No mining code on the device — remote control of the user's own node only |
+| On-device mining prohibition | **Play build ships with phone mining compiled out** (`PHONE_MINING = false`); remote control of the user's own node remains. The sideload APK has opt-in, user-initiated phone mining |
 | Data safety | Collects: account email, wallet data (server-side), app settings — no third-party sharing, encrypted in transit and at rest |
 | Target API level | targetSdk 35 (current Play requirement) |
 | Account deletion | Wallet data can be deleted server-side on request; app logout clears local session |
@@ -56,13 +62,13 @@ Start / pause / resume / stop mining that runs on **your own Monefa node or serv
 
 ## 🔐 Verification
 
-sha256 of `MonefaWallet-v1.0.1.apk`:
+sha256 of `MonefaWallet-v1.0.2.apk`:
 
 ```
-133ef232d3d4f1137d7ff501facc681f87467f7ab96271c5b11471d8378d805b
+23dba7ed0740e57ef5820c36de1d27831b8789bcd8a89fefef928512f1446e38
 ```
 
-> 🔧 **v1.0.1 hotfix** — fixes the first-launch crash in v1.0.0 (`UninitializedPropertyAccessException` during app startup). versionCode 2, installs directly over v1.0.0. Same signature.
+> 🔧 **v1.0.2** — real on-device CPU mining (opt-in, pool stratum), math captcha on login/register, live hashrate. Includes the v1.0.1 launch-crash fix. versionCode 3, installs over previous versions. Same signature.
 
 The APK is signed with the official Monefa release key. Android will warn about unknown sources when sideloading — this is normal outside Play Store.
 
