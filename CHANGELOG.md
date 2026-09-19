@@ -5,6 +5,31 @@ Official binaries: [Releases](../../releases) · Live network: [monefa.net](http
 
 ---
 
+## [Android Wallet v1.0.0] — 2026-09
+
+First official native mobile wallet — **Kotlin + Jetpack Compose, no WebView**.
+
+### Wallet
+- Same monefa.net account as the web: login, balance (unlocked/locked), transfer history
+- Stealth transfers (mixin = 3) with optional Payment ID
+- Receive with on-device QR generation, 16-word seed reveal (Persian wordlist)
+
+### Mining (remote control — cloud mining)
+- Start / pause / resume / stop mining on the user's own node or server (`/user-mining` API)
+- Solo/Pool mode, thread count, live hashrate, shares, blocks found, network stats
+- Nothing mines on the phone — designed for Google Play Financial-features policy compliance
+
+### Security & Privacy
+- EncryptedSharedPreferences (AES-256-GCM) session storage, optional PIN lock (SHA-256)
+- Zero trackers/ads — only `INTERNET` permission; all traffic to https://monefa.net
+- Privacy policy live at monefa.net/privacy
+
+### Localization
+- EN / FA / RU / AR / TR with full RTL and in-app language switcher
+- APK: `MonefaWallet-v1.0.0.apk` (~8 MB, signed release build, minSdk 24, targetSdk 35)
+
+---
+
 ## [Network v2.1.0] — 2026-09
 
 ### Telegram Mini App (rebuilt)
