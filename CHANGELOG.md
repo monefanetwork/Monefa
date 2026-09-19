@@ -5,6 +5,28 @@ Official binaries: [Releases](../../releases) · Live network: [monefa.net](http
 
 ---
 
+## [Android Wallet v1.0.2] — 2026-09
+
+Mining on the phone's own CPU + captcha.
+
+### Real on-device mining (opt-in)
+- Native Kotlin implementation of the Monefa PoW (keccak-512, 128 KB memory-hard scratchpad, 2048 iterations) — verified hash-exact against the node's reference implementation via automated vectors
+- Connects to the official pool stratum `monefa.net:3333` (subscribe/authorize/notify/submit, auto-reconnect, difficulty handling)
+- Foreground service with persistent notification — only starts by explicit user action, stop anytime from the notification or the app
+- Thread count control (1–8), live hashrate, accepted/rejected shares, uptime
+- For Google Play builds the feature is compiled out (`PHONE_MINING = false`) per Play Financial-features policy
+
+### Security
+- Math captcha (HMAC-signed, 5-min validity) now required on login/register — mirrored on the website
+- Includes the v1.0.1 launch-crash fix
+
+### Fixes
+- Live hashrate now always visible on the Mining screen (local and cloud modes)
+- versionCode 3 (versionName 1.0.2) — installs directly over previous versions
+- sha256: `23dba7ed0740e57ef5820c36de1d27831b8789bcd8a89fefef928512f1446e38`
+
+---
+
 ## [Android Wallet v1.0.1] — 2026-09
 
 Hotfix release — fixes the first-launch crash present in v1.0.0.
