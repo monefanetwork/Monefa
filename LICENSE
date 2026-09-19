@@ -1,0 +1,44 @@
+Monefa Network — Software License
+
+Copyright (c) 2026 Monefa Network. All rights reserved.
+
+1. Definitions
+   - "Source Code": the proprietary TypeScript/JavaScript source code of the
+     Monefa blockchain node, web application, bot, wallet software, SDK and
+     related build scripts.
+   - "Official Binaries": the signed release artifacts (GUI Wallet, CLI
+     miner, browser extension packages) published by Monefa Network in this
+     repository's Releases page or on https://monefa.net.
+
+2. Source Code
+   The Source Code is proprietary and is NOT licensed for copying,
+   modification, distribution, sublicensing or resale. Access to the Source
+   Code, when granted to auditors or partners, is governed by a separate
+   written agreement.
+
+3. Official Binaries — permitted use
+   Permission is granted, free of charge, to any person obtaining an Official
+   Binary to install and use it for any lawful purpose, including mining the
+   Monefa network, holding and transferring XMF, and operating it on private
+   or commercial hardware.
+
+4. Official Binaries — redistribution
+   Redistribution of unmodified Official Binaries is permitted, provided
+   that: (a) no fee is charged beyond the cost of transfer; (b) the binaries
+   are not re-signed, re-branded or bundled with additional software without
+   written permission; (c) this notice accompanies any redistribution.
+
+5. Warranty and liability
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+   OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+   THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. Trademarks
+   "Monefa", "XMF" and the Monefa logo may not be used to promote derived
+   products or services without prior written consent of Monefa Network.
+
+Contact: https://monefa.net — Telegram: @Monefanet_bot
