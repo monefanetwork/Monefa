@@ -40,7 +40,7 @@ Monefa is a complete, self-hosted privacy blockchain stack. Every layer — the 
 | 🤖 **Telegram bot + Mini App** | Telegram (mobile/desktop) | [@Monefanet_bot](https://t.me/Monefanet_bot) |
 | 🧩 **Browser extension** | Chrome / Firefox | [monefa.net/downloads](https://monefa.net/downloads) |
 | ⛏️ **CLI Miner (standalone binary)** | Windows · Linux x64 | [Download → Releases](../../releases/tag/miner-v1.1.0) |
-| 📱 **Android Wallet v1.0.0** (native Kotlin, no WebView) | Android 7.0+ | [Download → Releases](../../releases/tag/wallet-android-v1.0.0) · [monefa.net/downloads](https://monefa.net/downloads) |
+| 📱 **Android Wallet v1.0.0** (native Kotlin, no WebView) | Android 7.0+ | [Download → Releases](../../releases/tag/wallet-android-v1.0.1) · [monefa.net/downloads](https://monefa.net/downloads) |
 
 ## ⛏️ Mining — four easy ways
 
@@ -131,7 +131,7 @@ Found a bug or have an idea? Open an [issue](../../issues) or reach the team via
 | روش استفاده | لینک |
 |---|---|
 | 🌐 کیف پول وب | [monefa.net](https://monefa.net) |
-| 📱 کیف پول اندروید (ناتیو کاتلین، بدون WebView) | اندروید ۷+ · [Releases](../../releases/tag/wallet-android-v1.0.0) یا [monefa.net/downloads](https://monefa.net/downloads) |
+| 📱 کیف پول اندروید (ناتیو کاتلین، بدون WebView) | اندروید ۷+ · [Releases](../../releases/tag/wallet-android-v1.0.1) یا [monefa.net/downloads](https://monefa.net/downloads) |
 | 🖥️ کیف پول دسکتاپ (ویندوز/لینوکس) | [Releases](../../releases/tag/gui-wallet-v1.1.0) یا [monefa.net/downloads](https://monefa.net/downloads) |
 | 🤖 بات و Mini App تلگرام | [@Monefanet_bot](https://t.me/Monefanet_bot) |
 | 🧩 افزونه مرورگر | [monefa.net/downloads](https://monefa.net/downloads) |
